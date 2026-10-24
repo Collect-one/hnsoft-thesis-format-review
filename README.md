@@ -1,10 +1,12 @@
 # hnsoft-thesis-format-review
 
-湖南软件职业技术大学毕业论文/毕业设计 DOCX 的格式与内容一致性审查 Skill。
+湖南软件职业技术大学毕业论文/毕业设计 DOCX 的格式、结构与内容一致性审查 Skill。
 
 ## 功能
 
 - 检查标题、正文、图题、代码的字体、字号、行距和缩进
+- 按总体功能模块图检查角色名称、角色顺序和章节结构；角色型第4章的三级功能标题按项目实际功能核对，不要求与图节点逐项对应，允许不同角色出现同名功能
+- 检查角色型标题、图题、表题和简易图中的角色名称是否统一
 - 检查目录缓存页码与实际分页是否一致
 - 检查图题、正文引用、图片复用和编号连续性
 - 检查三线表宽度、边线、表题和行结构
@@ -12,6 +14,24 @@
 - 检查摘要、关键词、英文摘要和结论/参考文献/致谢标题
 - 导出 PDF 并渲染 PNG，便于逐页目检
 - 默认只读；只有用户明确授权后才做最小修改
+- 版面美化、页尾空白和代码框调整优先交给配套的 `hnsoft-thesis-layout-polish`；未安装该 Skill 时，本 Skill 仍完成格式、结构和内容审查，只列出版面问题，不自动安装配套 Skill
+
+## 配套版面优化 Skill
+
+本 Skill 负责格式、结构、内容一致性和参考文献审查，不负责整篇论文的版面美化。
+
+如需处理页尾空白、图表分页、续表、图片尺寸、代码框和目录同步，可另行安装：
+
+- 仓库：[hnsoft-thesis-layout-polish](https://github.com/Collect-one/hnsoft-thesis-layout-polish)
+
+也可以直接对 Agent 说：
+
+```text
+帮我安装这个 skill：
+https://github.com/Collect-one/hnsoft-thesis-layout-polish
+```
+
+两个 Skill 可以独立安装。未安装版面优化 Skill 时，本 Skill 仍完成格式、结构和内容审查，只输出版面问题清单，不会自动下载或安装另一个 Skill。
 
 ## 快速安装
 
@@ -50,7 +70,11 @@ git pull
 ## 装好之后这样用
 
 ```text
-使用 $hnsoft-thesis-format-review，检查这篇毕业论文的格式和前后矛盾。
+使用 $hnsoft-thesis-format-review，检查这篇毕业论文的格式、结构和前后矛盾。
+
+结构审查必须提供论文中的总体功能模块图；图号不限，但不能假定一定是“图3.1”。用户需确认图中的角色名称、数量和左右顺序。角色型第4章的三级功能标题按项目实际角色功能检查，不要求与图节点逐项对应。
+
+同一论文存在多个版本时，以用户指定的唯一准稿为准，不混用旧版截图、旧版 PDF 或备份。
 ```
 
 ## 目录结构
@@ -73,6 +97,7 @@ hnsoft-thesis-format-review/
 └─ references/
    ├─ hunanruan-2026-format.md
    ├─ review-checklist.md
+   ├─ thesis-structure-profile.md
    └─ report-template.md
 ```
 
@@ -91,6 +116,7 @@ hnsoft-thesis-format-review/
 - 学校最新范本和格式要求优先于本仓库的规则摘要。
 - `格式要求.txt` 是可选输入示例，不是硬依赖；规则已内置于 `references/hunanruan-2026-format.md`。
 - 默认只读；修改论文前需要用户明确授权，并先备份、再重新导出 PDF 核对分页。
+- 开放式版面美化不属于本 Skill。已安装 `hnsoft-thesis-layout-polish` 时使用该 Skill 并在完成后复审；未安装时保留版面问题清单，不声称已完成美化。
 - 本仓库不包含学校范本原文件，只包含规则摘要和审查脚本。
 - `agents/openai.yaml` 是 Codex 的可选 UI 元数据；其他 Agent 可以忽略。
 
