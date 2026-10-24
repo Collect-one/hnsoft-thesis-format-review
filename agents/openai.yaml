@@ -1,4 +1,4 @@
 interface:
-  display_name: "湖南软件职业技术大学论文审查"
-  short_description: "面向湖南软件职业技术大学毕业论文的格式与内容一致性审查工具"
-  default_prompt: "使用 $hnsoft-thesis-format-review 审查这篇毕业论文 DOCX 的格式和前后矛盾。"
+  display_name: "湖南软件职业技术大学论文格式与结构审查"
+  short_description: "面向湖南软件职业技术大学毕业论文的格式、结构与内容一致性审查工具"
+  default_prompt: "使用 $hnsoft-thesis-format-review 审查这篇毕业论文 DOCX 的格式、结构和前后矛盾；结构角色顺序以论文中的总体功能模块图为准。"
