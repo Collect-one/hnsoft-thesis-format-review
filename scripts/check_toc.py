@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-from docx_common import DocxModel, ParagraphInfo, find_body_start, find_body_start
+from docx_common import DocxModel, ParagraphInfo, find_body_start
 
 
 def norm(s: str) -> str:

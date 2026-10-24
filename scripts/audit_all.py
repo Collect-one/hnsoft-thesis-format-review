@@ -127,7 +127,7 @@ def main() -> int:
     fig_findings = [f for f in all_findings if f.get("section") == "figures"]
     table_findings = [f for f in all_findings if f.get("section") == "tables"]
     if not fig_findings:
-        lines.append("- 图题、正文引用和编号未发现缺失或重复。")
+        lines.append("- 图题、正文引用存在性和编号未发现缺失或重复；引用句与图片的实际页内位置、图片比例及图片内容仍需人工复核。")
     else:
         for f in fig_findings:
             lines.append(f"- **{f.get('message')}**")
@@ -135,7 +135,7 @@ def main() -> int:
                 for x in f["figures"]:
                     lines.append(f"  - 图{x.get('number')}：{x.get('title')}（题注段落 {x.get('caption_paragraph')}）")
     if not table_findings:
-        lines.append("- 表格宽度、三线表边线、表题和行结构未发现异常。")
+        lines.append("- 表格宽度、上下边线、表题和行结构未发现异常；表内分隔线和续表题仍需人工复核。")
     else:
         for f in table_findings:
             lines.append(f"- {f.get('message')}")

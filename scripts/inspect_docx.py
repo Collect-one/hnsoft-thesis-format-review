@@ -6,7 +6,7 @@ import json
 import re
 from pathlib import Path
 
-from docx_common import DocxModel, ParagraphInfo, find_body_start, find_body_start
+from docx_common import DocxModel, ParagraphInfo, find_body_start
 
 CAPTION_RE = re.compile(r"^(图|表|续表)\s*\d+\.\d+\s+\S")
 HEADING_STYLE = {"1": 1, "2": 2, "3": 3}

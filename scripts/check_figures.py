@@ -7,7 +7,7 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
-from docx_common import DocxModel, ParagraphInfo, find_body_start, find_body_start
+from docx_common import DocxModel, ParagraphInfo, find_body_start
 
 CAPTION_RE = re.compile(r"^(图|表|续表)\s*(\d+)\.(\d+)\s+(.+)$")
 REF_RE = re.compile(r"(图|表)\s?(\d+)\.(\d+)")

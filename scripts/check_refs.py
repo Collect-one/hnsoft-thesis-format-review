@@ -16,7 +16,7 @@ def has_numbering(p: ParagraphInfo) -> bool:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="Check reference list numbering, years, punctuation and EB/OL fields.")
+    ap = argparse.ArgumentParser(description="Check reference list numbering, years, punctuation and online-resource locators.")
     ap.add_argument("docx")
     ap.add_argument("--json", dest="json_path")
     args = ap.parse_args()
@@ -104,19 +104,24 @@ def main() -> int:
                 "paragraph": p.index,
                 "message": "页码前的冒号后缺空格。",
             })
-        if "[EB/OL]" in body and not re.search(r"https?://|DOI:", body, re.I):
+        has_locator = re.search(
+            r"https?://\S+|DOI\s*:\s*10\.\d{4,9}/\S+|doi\.org/10\.\d{4,9}/\S+|arXiv\s*:\s*\d{4}\.\d{4,5}(?:v\d+)?",
+            body,
+            re.I,
+        )
+        if "[EB/OL]" in body and not has_locator:
             findings.append({
                 "severity": "suggestion",
-                "kind": "ebol_missing_url",
+                "kind": "ebol_missing_locator",
                 "paragraph": p.index,
-                "message": "EB/OL 条目缺 URL 或 DOI。",
+                "message": "EB/OL 条目建议补充 URL、DOI、arXiv 或其他稳定可定位标识。",
             })
-        if "[J/OL]" in body and "网络首发" in body and not re.search(r"\d+\s*\(\s*\d+\s*\)", body):
+        if "[J/OL]" in body and "网络首发" in body and not re.search(r"\d+\s*\(\s*\d+\s*\)", body) and not has_locator:
             findings.append({
                 "severity": "suggestion",
-                "kind": "online_first",
+                "kind": "online_first_missing_locator",
                 "paragraph": p.index,
-                "message": "J/OL 网络首发条目缺卷(期)或页码，建议补 DOI/URL 或引用日期。",
+                "message": "J/OL 网络首发条目未给出卷(期)/页码时，建议补充 DOI、URL、arXiv 标识或引用日期等可定位信息。",
             })
         if "[M]" in body and not re.search(r"[:：]\s*\S+,\s*\d{4}", body):
             findings.append({
