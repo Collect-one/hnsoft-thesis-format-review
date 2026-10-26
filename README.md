@@ -16,23 +16,6 @@
 - 默认只读；只有用户明确授权后才做最小修改
 - 版面美化、页尾空白和代码框调整优先交给配套的 `hnsoft-thesis-layout-polish`；未安装该 Skill 时，本 Skill 仍完成格式、结构和内容审查，只列出版面问题，不自动安装配套 Skill
 
-## 配套版面优化 Skill
-
-本 Skill 负责格式、结构、内容一致性和参考文献审查，不负责整篇论文的版面美化。
-
-如需处理页尾空白、图表分页、续表、图片尺寸、代码框和目录同步，可另行安装：
-
-- 仓库：[hnsoft-thesis-layout-polish](https://github.com/Collect-one/hnsoft-thesis-layout-polish)
-
-也可以直接对 Agent 说：
-
-```text
-帮我安装这个 skill：
-https://github.com/Collect-one/hnsoft-thesis-layout-polish
-```
-
-两个 Skill 可以独立安装。未安装版面优化 Skill 时，本 Skill 仍完成格式、结构和内容审查，只输出版面问题清单，不会自动下载或安装另一个 Skill。
-
 ## 快速安装
 
 把下面这句话发给你的 Agent：
@@ -115,6 +98,23 @@ hnsoft-thesis-format-review/
 - 开放式版面美化不属于本 Skill。已安装 `hnsoft-thesis-layout-polish` 时使用该 Skill 并在完成后复审；未安装时保留版面问题清单，不声称已完成美化。
 - 本仓库不包含学校范本原文件，只包含规则摘要和审查脚本。
 - `agents/openai.yaml` 是 Codex 的可选 UI 元数据；其他 Agent 可以忽略。
+
+## 配套版面优化 Skill
+
+本 Skill 负责格式、结构、内容一致性和参考文献审查，不负责整篇论文的版面美化。
+
+如需处理页尾空白、图表分页、续表、图片尺寸、代码框和目录同步，可另行安装：
+
+- 仓库：[hnsoft-thesis-layout-polish](https://github.com/Collect-one/hnsoft-thesis-layout-polish)
+
+也可以直接对 Agent 说：
+
+```text
+帮我安装这个 skill：
+https://github.com/Collect-one/hnsoft-thesis-layout-polish
+```
+
+两个 Skill 可以独立安装。未安装版面优化 Skill 时，本 Skill 仍完成格式、结构和内容审查，只输出版面问题清单，不会自动下载或安装另一个 Skill。
 
 ## 免责声明
 
